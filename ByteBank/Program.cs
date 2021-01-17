@@ -12,25 +12,22 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(456, 0);
-            }
-            catch (ArgumentException ex)
-            {
-                if(ex.ParamName == "numero")
-                {
-                    
-                }
+                ContaCorrente conta1 = new ContaCorrente(4564, 789684);
+                ContaCorrente conta2 = new ContaCorrente(7891, 456794);
 
-                Console.WriteLine("Argumento com problema: " + ex.ParamName);
-                Console.WriteLine("Ocorreu uma exceção do tipo ArgumentException");
-                Console.WriteLine(ex.Message);
+                //conta1.Transferir(10000, conta2);
+                conta1.Sacar(10000);
             }
-            catch (Exception ex)
+            catch (OperacaoFinanceiraException e)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+
+                Console.WriteLine("Informações da INNER EXCEPTION (exceção interna):");
+
+                //Console.WriteLine(e.InnerException.Message);
+                //Console.WriteLine(e.InnerException.StackTrace);
             }
-            
-            //Metodo();
 
             Console.WriteLine("Execução finalizada. Tecle enter para sair");
             Console.ReadLine();
